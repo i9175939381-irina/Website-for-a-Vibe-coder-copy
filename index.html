@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vibe Coder — портфолио</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="testimonials.css" />
+  <link rel="stylesheet" href="target-cursor.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div id="target-cursor" class="target-cursor-wrapper" aria-hidden="true">
+    <div class="target-cursor-dot"></div>
+    <div class="target-cursor-corner corner-tl"></div>
+    <div class="target-cursor-corner corner-tr"></div>
+    <div class="target-cursor-corner corner-br"></div>
+    <div class="target-cursor-corner corner-bl"></div>
+  </div>
+
+  <div
+    id="contact-modal"
+    class="contact-modal"
+    aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="contact-modal-title"
+  >
+    <div class="contact-modal__backdrop" aria-hidden="true"></div>
+    <div class="contact-modal__panel">
+      <button type="button" class="contact-modal__close cursor-target" aria-label="Закрыть окно">&times;</button>
+      <h2 id="contact-modal-title" class="contact-modal__title">Написать мне</h2>
+      <p class="contact-modal__lead">Оставьте контакты — я отвечу лично.</p>
+      <form id="contact-modal-form" class="contact-modal__form">
+        <div class="contact-modal__field">
+          <label class="contact-modal__label" for="modal-name">Имя</label>
+          <input class="contact-modal__input" id="modal-name" name="name" type="text" autocomplete="name" required placeholder="Ваше имя" />
+        </div>
+        <div class="contact-modal__field">
+          <label class="contact-modal__label" for="modal-email">Email</label>
+          <input class="contact-modal__input" id="modal-email" name="email" type="email" autocomplete="email" required placeholder="name@example.com" />
+        </div>
+        <div class="contact-modal__field">
+          <label class="contact-modal__label" for="modal-phone">Телефон</label>
+          <input class="contact-modal__input" id="modal-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required placeholder="+7 …" />
+        </div>
+        <label class="contact-modal__consent">
+          <input class="contact-modal__checkbox" id="modal-consent" name="consent" type="checkbox" required />
+          <span class="contact-modal__consent-text">Даю согласие на обработку моих персональных данных</span>
+        </label>
+        <button type="submit" class="btn btn--primary contact-modal__submit">
+          <svg class="btn__circuit" viewBox="0 0 320 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect class="btn__circuit-rail" x="1.5" y="1.5" width="317" height="49" rx="24.5" />
+            <rect class="btn__circuit-pulse" x="1.5" y="1.5" width="317" height="49" rx="24.5" pathLength="100" />
+          </svg>
+          <span class="btn__txt">Отправить</span>
+        </button>
+      </form>
+      <div id="contact-modal-success" class="contact-modal__success" hidden>
+        <p class="contact-modal__success-lead">Спасибо! Данные приняты.</p>
+        <button type="button" class="btn btn--secondary contact-modal__success-close">
+          <svg class="btn__circuit" viewBox="0 0 320 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect class="btn__circuit-rail" x="1.5" y="1.5" width="317" height="49" rx="24.5" />
+            <rect class="btn__circuit-pulse" x="1.5" y="1.5" width="317" height="49" rx="24.5" pathLength="100" />
+          </svg>
+          <span class="btn__txt">Закрыть</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <a class="logo" href="#top">VC</a>
+    <nav class="nav" aria-label="Навигация по странице">
+      <a href="#about">Обо мне</a>
+      <a href="#system-pitch" title="Структура до визуала">Система</a>
+      <a href="#skills">Умения</a>
+      <a href="#project-gets" title="Что получает проект">Проекту</a>
+      <a href="#client-gets" title="Что получает клиент">Клиенту</a>
+      <a href="#projects">Проекты</a>
+      <a href="#testimonials">Отзывы</a>
+      <a href="#contact" class="nav__cta btn btn--warm btn--compact js-open-contact-modal">
+        <svg class="btn__circuit btn__circuit--warm" viewBox="0 0 320 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect class="btn__circuit-rail btn__circuit-rail--warm" x="1.5" y="1.5" width="317" height="49" rx="24.5" />
+          <rect class="btn__circuit-pulse btn__circuit-pulse--warm" x="1.5" y="1.5" width="317" height="49" rx="24.5" pathLength="100" />
+        </svg>
+        <span class="btn__txt">Контакты</span>
+      </a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero__grid">
+        <div class="hero__content">
+          <p class="hero__eyebrow animate-in" style="--d: 0ms">Vibe Coder / Portfolio / Web &amp; AI Experiences</p>
+          <h1 class="hero__title animate-in" style="--d: 80ms">
+            Я делаю сайты, интерфейсы и digital-проекты, которые выглядят как вайб, а работают как система
+          </h1>
+          <p class="hero__lead animate-in" style="--d: 160ms">
+            Не просто «что-то сверстать», а собрать ощущение, стиль, логику и подачу так, чтобы проект хотелось открыть, листать и запомнить.
+          </p>
+          <div class="hero__actions hero__actions--cta animate-in" style="--d: 240ms">
+            <a class="btn btn--primary js-open-contact-modal" href="#contact"><span class="btn__txt">Обсудить проект</span></a>
+            <a class="btn btn--secondary" href="#projects">
+              <svg class="btn__circuit" viewBox="0 0 320 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect class="btn__circuit-rail" x="1.5" y="1.5" width="317" height="49" rx="24.5" />
+                <rect class="btn__circuit-pulse" x="1.5" y="1.5" width="317" height="49" rx="24.5" pathLength="100" />
+              </svg>
+              <span class="btn__txt">Посмотреть проекты</span>
+            </a>
+          </div>
+        </div>
+        <div class="hero__visual animate-in" style="--d: 120ms">
+          <figure class="hero__figure">
+            <div class="hero__photo-glow" aria-hidden="true"></div>
+            <img
+              class="hero__photo"
+              src="images/hero.png"
+              width="520"
+              height="780"
+              alt="Портрет: за рабочим столом с ноутбуком и подсветкой кода"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+              onerror="this.onerror=null;this.src='hero.png';"
+            />
+          </figure>
+          <p
+            class="hero__name animate-in"
+            data-hero-name
+            data-hero-name-lines="Ирина|Филатова"
+            style="--d: 180ms"
+          >
+            <span class="visually-hidden">Ирина Филатова</span>
+            <span class="hero__name-fallback" aria-hidden="true">
+              <span class="hero__name-line">Ирина</span>
+              <span class="hero__name-line">Филатова</span>
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="hero__deco" aria-hidden="true"></div>
+    </section>
+
+    <section id="about" class="section section--about">
+      <div class="section__inner">
+        <h2 class="section__title">Я не просто пишу код — я собираю впечатление</h2>
+        <div class="about__grid">
+          <div class="about__text prose">
+            <p>Я работаю на стыке кода, визуала, UX и AI-инструментов.</p>
+            <p>Для меня сайт — это не набор блоков. Это ощущение от проекта, ритм, подача, структура и то, как человек чувствует себя внутри интерфейса.</p>
+            <p>Я не собираю сайты из кусков — я выстраиваю их как цельную систему, где есть вкус, логика и движение.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="system-pitch" class="section section--pitch" aria-labelledby="pitch-heading">
+      <div class="section__inner section__inner--pitch">
+        <h2 id="pitch-heading" class="visually-hidden">Структура проекта до визуала</h2>
+        <p class="pitch__hook">Если проект не складывается — дело не в дизайне.</p>
+        <div class="pitch__body">
+          <p>Чаще всего просто нет структуры: всё есть по отдельности, но не работает вместе.</p>
+          <p>Из-за этого появляются бесконечные правки, разные версии и ощущение, что «что-то не то», хотя работа идёт.</p>
+          <p class="pitch__turn">Я собираю проект так, чтобы это исчезло.</p>
+          <ol class="pitch__sequence">
+            <li>Сначала становится понятно, на чём он держится.</li>
+            <li>Потом выстраивается логика и порядок.</li>
+            <li>И только после этого появляется визуал — уже как продолжение, а не попытка «спасти».</li>
+          </ol>
+        </div>
+        <div class="pitch__finale">
+          <p class="pitch__finale-text">В итоге проект начинает работать как система, а не как набор решений.</p>
+          <div class="pitch__finale-line" aria-hidden="true">
+            <span class="pitch__finale-rail"></span>
+            <span class="pitch__finale-mover">
+              <span class="pitch__finale-star">✦</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section section--skills">
+      <div class="section__inner">
+        <h2 class="section__title section__title--center">Что я делаю</h2>
+        <div class="cards">
+          <article class="card">
+            <h3 class="card__title">Лендинги</h3>
+            <p class="card__text">Сайты, которые не просто «есть», а собирают внимание, держат ритм и ведут человека по смыслу.</p>
+          </article>
+          <article class="card">
+            <h3 class="card__title">Портфолио и личные сайты</h3>
+            <p class="card__text">Страницы, которые показывают не только работы, но и стиль, характер и уровень.</p>
+          </article>
+          <article class="card">
+            <h3 class="card__title">Визуальные концепты</h3>
+            <p class="card__text">Когда нужен не просто сайт, а ощущение: атмосфера, характер, настроение, подача.</p>
+          </article>
+          <article class="card">
+            <h3 class="card__title">AI + Web</h3>
+            <p class="card__text">Использую нейросети как инструмент ускорения и усиления идей, а не как замену мышлению.</p>
+          </article>
+          <article class="card">
+            <h3 class="card__title">UX и структура</h3>
+            <p class="card__text">Продумываю, как человек читает, куда смотрит, где теряется и где принимает решение.</p>
+          </article>
+          <article class="card">
+            <h3 class="card__title">Быстрый запуск</h3>
+            <p class="card__text">Могу собрать сильную первую версию быстро, без месяцев бесконечных согласований.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="project-gets" class="section section--skills section--benefits">
+      <div class="section__inner">
+        <h2 class="section__title section__title--center">Что получает проект</h2>
+        <div class="cards">
+          <article class="card card--magnetic" data-magnetic-term tabindex="0">
+            <p class="card__text card__text--line">— понятную структуру, которая не разваливается</p>
+          </article>
+          <article class="card card--magnetic" data-magnetic-term tabindex="0">
+            <p class="card__text card__text--line">— визуал, который не шумит, а усиливает</p>
+          </article>
+          <article class="card card--magnetic" data-magnetic-term tabindex="0">
+            <p class="card__text card__text--line">— ощущение целостности</p>
+          </article>
+          <article class="card card--magnetic" data-magnetic-term tabindex="0">
+            <p class="card__text card__text--line">— скорость без потери смысла</p>
+          </article>
+          <article class="card card--magnetic" data-magnetic-term tabindex="0">
+            <p class="card__text card__text--line">— систему, а не набор экранов</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="client-gets" class="section section--skills section--benefits">
+      <div class="section__inner">
+        <h2 class="section__title section__title--center">Что получает клиент</h2>
+        <div class="cards">
+          <article class="card card--magnetic" data-magnetic-term tabindex="0">
+            <p class="card__text card__text--line">— ясность вместо хаоса</p>
+          </article>
+          <article class="card card--magnetic" data-magnetic-term tabindex="0">
+            <p class="card__text card__text--line">— решения вместо бесконечных обсуждений</p>
+          </article>
+          <article class="card card--magnetic" data-magnetic-term tabindex="0">
+            <p class="card__text card__text--line">— скорость без потери смысла</p>
+          </article>
+          <article class="card card--magnetic" data-magnetic-term tabindex="0">
+            <p class="card__text card__text--line">— результат, который работает, а не просто выглядит</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section section--projects">
+      <div class="section__inner">
+        <h2 class="section__title section__title--center">Избранные проекты</h2>
+        <div class="projects">
+          <article class="project">
+            <div class="project__meta">01 — landing</div>
+            <div class="project__thumb">
+              <img
+                class="project__img"
+                src="images/Практика англ.языка.png"
+                width="960"
+                height="540"
+                alt="Лендинг: практика английского языка, интерфейс FluentBuddy"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <h3 class="project__title">Практика английского</h3>
+            <p class="project__desc">Лендинг под продукт для практики английского: чистый SaaS-визуал, акцент на пользе и CTA.</p>
+            <p class="project__done"><strong>Что сделано:</strong> структура, тексты, дизайн-концепция, сборка.</p>
+          </article>
+          <article class="project">
+            <div class="project__meta">02 — portfolio</div>
+            <div class="project__thumb">
+              <img
+                class="project__img"
+                src="images/Портфолио.png"
+                width="960"
+                height="540"
+                alt="Сайт-портфолио, тёмная тема и сетка работ"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <h3 class="project__title">Портфолио</h3>
+            <p class="project__desc">Личный сайт с сильной подачей работ: фильтры, сетка, аккуратная типографика.</p>
+            <p class="project__done"><strong>Что сделано:</strong> позиционирование, визуальный ритм, упаковка кейсов.</p>
+          </article>
+          <article class="project">
+            <div class="project__meta">03 — promo</div>
+            <div class="project-gallery" data-project-gallery style="--slide-count: 2" role="region" aria-roledescription="карусель" aria-label="Скриншоты: бот и презентация для нутрициолога">
+              <div class="project-gallery__viewport">
+                <div class="project-gallery__track" data-gallery-track>
+                  <figure class="project-gallery__slide">
+                    <img
+                      class="project__img"
+                      src="images/Бот-копирайтер3.png"
+                      width="960"
+                      height="540"
+                      alt="Telegram-бот копирайтер для канала"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </figure>
+                  <figure class="project-gallery__slide">
+                    <img
+                      class="project__img"
+                      src="images/Маркетинговая стратегия для нутрициолога.png"
+                      width="960"
+                      height="540"
+                      alt="Презентация: маркетинговая стратегия для нутрициолога"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </figure>
+                </div>
+              </div>
+              <div class="project-gallery__chrome" aria-hidden="true"></div>
+              <div class="project-gallery__controls">
+                <button type="button" class="project-gallery__btn" data-gallery-prev aria-label="Предыдущий скриншот">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+                <span class="project-gallery__counter"><span data-gallery-index>1</span> / 2</span>
+                <button type="button" class="project-gallery__btn" data-gallery-next aria-label="Следующий скриншот">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                </button>
+              </div>
+            </div>
+            <h3 class="project__title">Промо и воронки</h3>
+            <p class="project__desc">Telegram-бот под контент и слайд с позиционированием для нутрициолога — два разных формата в одном кейсе.</p>
+            <p class="project__done"><strong>Что сделано:</strong> логика сценариев, тексты, визуальный каркас, CTA.</p>
+          </article>
+          <article class="project">
+            <div class="project__meta">04 — concept</div>
+            <div class="project-gallery" data-project-gallery style="--slide-count: 2" role="region" aria-roledescription="карусель" aria-label="Скриншоты: сайт фотографа и лендинг о нейросетях">
+              <div class="project-gallery__viewport">
+                <div class="project-gallery__track" data-gallery-track>
+                  <figure class="project-gallery__slide">
+                    <img
+                      class="project__img"
+                      src="images/Сайт для фотографа.png"
+                      width="960"
+                      height="540"
+                      alt="Концепт сайта фотографа"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </figure>
+                  <figure class="project-gallery__slide">
+                    <img
+                      class="project__img"
+                      src="images/Сайт о нейросетях.png"
+                      width="960"
+                      height="540"
+                      alt="Лендинг про обучение нейросетям"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </figure>
+                </div>
+              </div>
+              <div class="project-gallery__chrome" aria-hidden="true"></div>
+              <div class="project-gallery__controls">
+                <button type="button" class="project-gallery__btn" data-gallery-prev aria-label="Предыдущий скриншот">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+                <span class="project-gallery__counter"><span data-gallery-index>1</span> / 2</span>
+                <button type="button" class="project-gallery__btn" data-gallery-next aria-label="Следующий скриншот">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                </button>
+              </div>
+            </div>
+            <h3 class="project__title">Концепты сайтов</h3>
+            <p class="project__desc">Сайт фотографа и образовательный лендинг о нейросетях — разный контент, единая сетка превью.</p>
+            <p class="project__done"><strong>Что сделано:</strong> creative direction, структура, визуальная концепция.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="section section--testimonials" aria-labelledby="testimonials-heading">
+      <div class="section__inner">
+        <h2 id="testimonials-heading" class="section__title section__title--center">Отзывы</h2>
+        <p class="section__note">Кто уже работал — коротко о вайбе и результате.</p>
+        <div id="stagger-testimonials" class="stagger-testimonials">
+          <div class="stagger-testimonials__viewport">
+            <div id="stagger-testimonials-cards" class="stagger-testimonials__cards" aria-live="polite"></div>
+            <div class="stagger-testimonials__nav">
+              <button type="button" id="stagger-prev" class="cursor-target" aria-label="Предыдущий отзыв">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+              </button>
+              <button type="button" id="stagger-next" class="cursor-target" aria-label="Следующий отзыв">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="why" class="section section--why">
+      <div class="section__inner section__inner--narrow">
+        <h2 class="section__title">Почему ко мне идут не просто за кодом</h2>
+        <div class="prose">
+          <p>Потому что я умею видеть проект целиком.</p>
+          <p><strong>Не только:</strong></p>
+          <ul>
+            <li>как это собрать</li>
+          </ul>
+          <p><strong>но и:</strong></p>
+          <ul>
+            <li>как это подать</li>
+            <li>как это будет восприниматься</li>
+            <li>где человек зацепится взглядом</li>
+            <li>что запомнит</li>
+            <li>почему это будет выглядеть дороже, чем стоит</li>
+          </ul>
+          <h3 class="why__bridge-title">Я соединяю</h3>
+          <div class="why__bridge">
+            <p class="why__equation" role="group" aria-label="Эстетика, структура, digital-мышление, скорость">
+              <span class="why__term" tabindex="0" data-magnetic-term>эстетику</span>
+              <span class="why__plus" aria-hidden="true">+</span>
+              <span class="why__term" tabindex="0" data-magnetic-term>структуру</span>
+              <span class="why__plus" aria-hidden="true">+</span>
+              <span class="why__term" tabindex="0" data-magnetic-term>digital-мышление</span>
+              <span class="why__plus" aria-hidden="true">+</span>
+              <span class="why__term" tabindex="0" data-magnetic-term>скорость</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="stack" class="section section--stack">
+      <div class="section__inner">
+        <h2 class="section__title section__title--center">Инструменты</h2>
+        <ul class="badges">
+          <li class="badge">ChatGPT</li>
+          <li class="badge">Cursor</li>
+          <li class="badge">HTML / CSS / JS</li>
+          <li class="badge">React</li>
+          <li class="badge">Tailwind</li>
+          <li class="badge">Framer Motion</li>
+          <li class="badge">Figma</li>
+          <li class="badge">Tilda / Webflow / custom</li>
+          <li class="badge">Telegram / Bots / AI tools</li>
+        </ul>
+        <p class="stack__footnote">Но если честно — главный инструмент не стек, а вкус, насмотренность и умение собирать цельное впечатление.</p>
+      </div>
+    </section>
+
+    <section id="audience" class="section section--audience">
+      <div class="section__inner">
+        <h2 class="section__title">Кому подойдёт моя работа</h2>
+        <ul class="audience">
+          <li>экспертам</li>
+          <li>креаторам</li>
+          <li>digital-проектам</li>
+          <li>AI-продуктам</li>
+          <li>студиям</li>
+          <li>тем, кому нужен сайт с характером</li>
+          <li>тем, кто не хочет шаблонную безликую страницу</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="manifesto" id="manifesto" aria-labelledby="manifesto-heading">
+      <div class="manifesto__inner">
+        <h2 id="manifesto-heading" class="visually-hidden">Манифест</h2>
+        <blockquote class="manifesto__quote">
+          <span class="text-type" id="manifesto-typewriter" aria-hidden="true">
+            <span class="text-type__content"></span><span class="text-type__cursor" aria-hidden="true">_</span>
+          </span>
+        </blockquote>
+        <span id="manifesto-live" class="visually-hidden" aria-live="polite" aria-atomic="true"></span>
+        <p class="manifesto__action">
+          <button type="button" id="manifesto-next" class="btn-text btn-text--manifest">
+            Читать манифест <span class="btn-text__spark" aria-hidden="true">✦</span>
+          </button>
+        </p>
+      </div>
+    </section>
+
+    <section id="cta" class="section section--cta">
+      <div class="section__inner section__inner--cta">
+        <h2 class="section__title">Если тебе нужен сайт, который выглядит сильно и ощущается современно — давай соберём</h2>
+        <p class="cta__text">Могу помочь с концепцией, структурой, упаковкой и реализацией. От первого вайба до готовой страницы.</p>
+        <div class="hero__actions hero__actions--cta">
+          <a class="btn btn--primary js-open-contact-modal" href="#contact"><span class="btn__txt">Написать мне</span></a>
+          <a class="btn btn--secondary" href="#projects">
+            <svg class="btn__circuit" viewBox="0 0 320 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect class="btn__circuit-rail" x="1.5" y="1.5" width="317" height="49" rx="24.5" />
+              <rect class="btn__circuit-pulse" x="1.5" y="1.5" width="317" height="49" rx="24.5" pathLength="100" />
+            </svg>
+            <span class="btn__txt">Посмотреть работы</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section section--contact" aria-labelledby="contact-heading">
+      <div class="section__inner section__inner--contact">
+        <h2 id="contact-heading" class="section__title">Связаться со мной</h2>
+        <p class="contact__lead">Выберите удобный способ для связи — отвечу лично</p>
+        <div class="contact-links">
+          <a
+            class="btn btn--secondary btn--contact-channel"
+            href="https://t.me/FilatovaII"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg class="btn__circuit" viewBox="0 0 320 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect class="btn__circuit-rail" x="1.5" y="1.5" width="317" height="49" rx="14" />
+              <rect class="btn__circuit-pulse" x="1.5" y="1.5" width="317" height="49" rx="14" pathLength="100" />
+            </svg>
+            <span class="btn__txt">Написать в Telegram</span>
+          </a>
+          <a
+            class="btn btn--secondary btn--contact-channel"
+            href="https://max.ru/u/f9LHodD0cOJGijT9nxRI5tXK7KVfkzoYO8kdbPvTVoDB7-5uDGk-9b6k8lo"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg class="btn__circuit" viewBox="0 0 320 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect class="btn__circuit-rail" x="1.5" y="1.5" width="317" height="49" rx="14" />
+              <rect class="btn__circuit-pulse" x="1.5" y="1.5" width="317" height="49" rx="14" pathLength="100" />
+            </svg>
+            <span class="btn__txt">Написать в Max</span>
+          </a>
+          <a
+            class="btn btn--secondary btn--contact-channel"
+            href="mailto:irana0408@yandex.ru?subject=%D0%97%D0%B0%D0%BF%D1%80%D0%BE%D1%81%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0&body=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21"
+          >
+            <svg class="btn__circuit" viewBox="0 0 320 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect class="btn__circuit-rail" x="1.5" y="1.5" width="317" height="49" rx="14" />
+              <rect class="btn__circuit-pulse" x="1.5" y="1.5" width="317" height="49" rx="14" pathLength="100" />
+            </svg>
+            <span class="btn__txt">Email: irana0408@yandex.ru</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Vibe Coder · <span id="year"></span></p>
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="hero-name.js" defer></script>
+  <script src="buttons.js" defer></script>
+  <script src="manifesto-type.js" defer></script>
+  <script src="testimonials.js" defer></script>
+  <script src="projects-gallery.js" defer></script>
+  <script src="target-cursor.js" defer></script>
+</body>
+</html>
